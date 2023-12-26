@@ -1,0 +1,7 @@
+1st Step is to run nmap to discover services and open ports
+
+2nd step is visiting the website which gave a hint that each user can access his/her page using the codename which is the agent and some letter ex: Agent A. So I used curl command with the header of User-Agent and tried letters until I got that C shows us user chris with a message that his password is weak. So, we bruteforced ftp using hydra with his user and got the password "crystal". "curl "ip" -H "User-Agent: C" -L"
+
+3rd step is to download the files in the ftp server which contains a text message for user james indicating that his password is embedded in the images so we used stegseek and binwalk to get the password from a zip file that was in one of the images and we cracked the password of the zip using john to get the password of james which is "hackerrules!"
+
+4th step is we tried to find any privillege escalation vector and we did using sudo -l where we found that there is the vulnerability CVE-2019-14287 which is exploited when we execute this command "sudo -u#-1 bash"

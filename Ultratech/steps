@@ -1,0 +1,7 @@
+step 1 is to run nmap to get ports 31331 and 8081 then run gobuster for those 2 ports that are for http
+
+step 2 After enumerating the directories of 31331 we found that /js has a app.js file that has a function which allows for command injection can be done like this 10.10.x.x:8081/ping?ip=`command` those are back `` not ''.
+
+step 3 is after ls we found a database file that had credentials for user r00t for ssh with an md5 hashed password that is n100906.
+
+step 4 after ssh, we ran id and found that r00t is part of docker group. So, I used GTFObins docker shell exploit and changed alpine to bash since the image we had here was bash and got root. 

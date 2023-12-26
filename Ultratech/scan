@@ -1,0 +1,11 @@
+# Nmap 7.94SVN scan initiated Tue Dec 26 10:11:37 2023 as: nmap -A -p 30000-40000 -oN scan 10.10.168.119
+Nmap scan report for 10.10.168.119
+Host is up (0.14s latency).
+Not shown: 10000 closed tcp ports (conn-refused)
+PORT      STATE SERVICE VERSION
+31331/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: UltraTech - The best of technology (AI, FinTech, Big Data)
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Dec 26 10:14:46 2023 -- 1 IP address (1 host up) scanned in 189.61 seconds

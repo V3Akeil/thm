@@ -1,0 +1,9 @@
+Step 1 Run nmap to discover services on ports and gobuster for web directories
+
+Step 2 web enumeration until we found the /r/a/b/b/i/t subdirectory which leads to alice's credentials
+
+Step 3 ssh into alice and rund sudo -l to see what alice can run as other users. So, alice can run python3.6 and a python script as user rabbit. To exploit this vulnerability, we can see tha the python script is importing the random module so we created a .py file called random in the same dir to spawn /bin/bash and saved it. Then, we use the command "sudo -u rabbit" with the full paths of python 3.6 and the script to gain access to user rabbit.
+
+Step 4 in the home directory for user rabbit, there is an binary file called teaparty which I downloaded on my machine to use strings and know whats happening inside it. Suprisingly, I found that it uses echo with the full absolute path while date is without a path. So, we exploit this vulnerability by creating a bash script called date in the same directory which runs /bin/bash and modify the $PATH variable to start executing the binary from /home/rabbit which will favour the date bash script file located in the home direcory since its nit having an absolute path. Run teaparty and we access the user hatter.
+
+Step 5 we can run linpeas to enumerate the machine for any possible privillege escalation or we can run the command "getcap -r / 2>/dev/null" to view the capabilities which was perl that exploited using gtfobins

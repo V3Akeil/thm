@@ -1,0 +1,7 @@
+Step 1 run nmap and find services 
+
+Step 2 we found that ftp and smb can both be accessed using anonymous login and ftp has a writable directory 
+
+Step 3 the writable dir which is scripts has 3 files, a bash script, a text and a log file. I have realized that this bash script may be running as a crontab. So, I modified that bash script after downloading it to my machine to be a reverse shell and then I uploaded it to the writable directory to overwrite the bash file there. Then we got access.
+
+Step 4 searching for privesc vectors and we got a SUID which is the env that gave us root access.

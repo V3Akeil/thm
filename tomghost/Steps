@@ -1,0 +1,9 @@
+Step 1 is running Nmap to discover services such as the Apache server running on port 8080
+
+Step 2 was to research about existing exploits for the version of Apache Tomcat 9.0 which was the ghostcat on github that had the python script ajpShooter.py and we ran it using the command "python3 ajpShooter.py http://ip:port and the ajpServerPort with the target-file which is /WEV-INF/web.xml and the action read. After running the command, we got credentials which are "skyfuck:8730281lkjlkjdqlksalks" used in ssh.
+
+Step 3 we found a PGP file with the private key in the home directory of the user. So, we downloaded them to our machine using scp and got the hash of tryhackme.asc using the gpg2john command and cracked it to get the passphrase "alexandru"
+
+Step 4 using the passphrase, I imported the key with the "gpg --import" command and the decrypted the credentials file using "gpg --import" command to get the credentials "merlin:asuyusdoiuqoilkda312j31k2j123j1g23g12k3g12kj3gk12jg3k12j3kj123j" for ssh. 
+
+Step 5, we found out that merlin can run zip as sudo so we escalated our privilleges using gtfobins.

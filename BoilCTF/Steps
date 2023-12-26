@@ -1,0 +1,7 @@
+Step 1 Run nmap and gobuster but be carefull because u need to scan all the ports *** ssh is on port 55007 and for gobuster in the ip/joomla for the subenumeration, I needed to run the dirb common wordlist instead of the usual one to find /_test
+
+Step 2 searched for existing exploits for sar2html and found a python script which gives us RC. I used it and gained access to find "basterd:superduperp@$$" in log.txt so we used it to ssh -p 55007 user@ip.
+
+Step 3 in the backup.sh file I found a user stoner with his password superduperp@$$no1knows so I used su to access stoner.
+
+Step 4 a hidden .secret file had the flag and then I searched for the SUIDs for privesc and found the /usr/bin/find and exploited it to get root. 

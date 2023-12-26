@@ -1,0 +1,11 @@
+1st Step is scanning the IP address using nmap and gobuster
+
+2nd Step is determining the versions of the services on the machine
+
+3rd Step is to use "wpscan --url (ip) -e u" to check for the version of the CMS which came to be Wordpress 5.0 that is vulnerable to Crop Image smt exploit using metasploit and to enumerate for users 
+
+4th Step is we initiated a dictionary attack using "wpscan --url (ip) -U (text file of users or just type the user) -P (password dictonary)"
+
+5th Step is use the exploit to gain access and then cat the config file to find a password which came to be for bjoel.
+
+6th step is we start enumeration using automated tools such as linpeas which helped us to find an uncommon SUID binary file called checker in /usr/sbin. By using ghidra, we found the main function which looks if the env variable admin is admin then we get uid as 0 which is root so we did "export admin=admin" and ran checker to get root access" Note*** I got in a rabbit hole when scanning for services and found the smb running for Billy. user.txt was in /media/usb

@@ -1,0 +1,13 @@
+1st Step is scanning the IP address using nmap and gobuster
+
+2nd Step is determining the versions of the services on the machine
+
+3rd Step is to discover the hidden urls and directories by performing web enumeration withen the website which where the admin and etc 
+
+4th Step is to download the archieve and investigate what is it about. It is a borg archieve that encrypts  backups of only updates or modifications on websites.
+
+5th Step is to know the essential commands to use borg after finding the hashed passphrase located in /etc/squid/passwd on the website and cracking it using john to get the phrase "squidward" and use it to extract the backup file using the command "borg extract the_archieve::the_music_file"
+
+6th step is to perform privilege escalation after finding alex's credentials in the backup that contained his username and the password "alex:S3cretP@s3"
+
+7th step is to modify the backup.sh file because alex can run it as root to find the root.txt file.
