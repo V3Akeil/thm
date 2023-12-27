@@ -1,0 +1,9 @@
+Step 1 is running nmap and gobuster
+
+Step 2 is running nikto and we found a possible vuln which is shellshock
+
+step 3 run metasploit and get a shell on the machine
+
+step 4 upload linpeas.sh and run it to know that the OS is old and vuln 
+
+step 5 search for an exploit which is in c language. Upload it and use gcc file.c -o file on the machine then run the file and get root access
